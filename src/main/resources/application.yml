@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: ms-productos
+        uri: lb://ms-productos
+        predicates:
+          - Path=/api/v1/productos/**
+        filters:
+          - StripPrefix=0
+      - id: ms-detalle-factura
+        uri: lb://ms-detalle-factura
+        predicates:
+          - Path=/api/v1/items/**
+        filters:
+          - StripPrefix=0
