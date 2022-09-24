@@ -8,6 +8,13 @@ spring:
           - Path=/api/v1/productos/**
         filters:
           - StripPrefix=0
+          - Ejemplo=Hola Mundo,prueba,HolaMundo
+#          - name: Ejemplo
+#            args:
+#              mensaje: Hola Mundo
+#              nombreCookie: prueba
+#              valorCookie: HolaMundo
+
       - id: ms-detalle-factura
         uri: lb://ms-detalle-factura
         predicates:
