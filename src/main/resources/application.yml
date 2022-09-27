@@ -1,3 +1,22 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      configuracion-por-defecto:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 5
+    instances:
+      productos:
+        base-config: configuracion-por-defecto
+  timelimiter:
+    configs:
+      configuracion-por-defecto:
+        timeout-duration: 3s
+    instances:
+      productos:
+        base-config: configuracion-por-defecto
+
 spring:
   cloud:
     gateway:
@@ -9,6 +28,11 @@ spring:
         filters:
           - StripPrefix=0
           - Ejemplo=Hola Mundo,prueba,HolaMundo
+          - name: CircuitBreaker
+            args:
+              name: productos
+              statusCodes: 500
+#              fallbackUri: forward:/api/items/
 #          - name: Ejemplo
 #            args:
 #              mensaje: Hola Mundo
