@@ -39,8 +39,8 @@ spring:
 #              nombreCookie: prueba
 #              valorCookie: HolaMundo
 
-      - id: ms-detalle-factura
-        uri: lb://ms-detalle-factura
+      - id: ms-items
+        uri: lb://ms-items
         predicates:
           - Path=/api/v1/items/**
         filters:
