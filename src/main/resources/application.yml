@@ -45,3 +45,10 @@ spring:
           - Path=/api/v1/items/**
         filters:
           - StripPrefix=0
+
+      - id: ms-auth
+        uri: lb://ms-auth
+        predicates:
+          - Path=/api/v1/usuarios/**
+        filters:
+          - StripPrefix=0
